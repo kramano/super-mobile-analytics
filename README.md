@@ -1,2 +1,2 @@
 # super-mobile-analytics
-Prortotype of mobile analaytics system.
+Prototype of mobile analytics system.
