@@ -42,7 +42,7 @@ object Generator {
   }
 
   def getLevelCompleteGen: Gen[LevelComplete] = {
-    val (time, nonce) = getTimeAndNonce()
+    val (time, nonce) = getTimeAndNonce
 
     for {
       user        <- getUserGen
@@ -53,7 +53,7 @@ object Generator {
   }
 
   def getInGamePurchase: Gen[InGamePurchase] = {
-    val (time, nonce) = getTimeAndNonce()
+    val (time, nonce) = getTimeAndNonce
     for {
       user       <- getUserGen
       client     <- getClientGen
@@ -63,7 +63,7 @@ object Generator {
   }
 
   def getGameInstalled: Gen[GameInstalled] = {
-    val (time, nonce) = getTimeAndNonce()
+    val (time, nonce) = getTimeAndNonce
     for {
       user   <- getUserGen
       client <- getClientGen
