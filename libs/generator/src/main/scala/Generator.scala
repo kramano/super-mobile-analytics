@@ -35,7 +35,7 @@ object Generator {
     } yield Client(ip, code, software)
   }
 
-  private def getTimeAndNonce(): (String, Int) = {
+  private def getTimeAndNonce: (String, Int) = {
     val time = Calendar.getInstance().getTime.toString
     val nonce = time.hashCode()
     (time, nonce)
