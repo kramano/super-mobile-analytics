@@ -3,18 +3,18 @@ object Events {
   case class Client(ip: String, countryCode: String, software: String)
 
   trait Event{
-    val time: Long
-    val nonce: Long
-    val gameId: Long
+    val time: String
+    val nonce: Int
+    val gameId: Int
   }
 
-  case class LevelComplete(user: User, client: Client, gameId: Long,
-                           levelNumber: Int, time: Long, nonce: Long) extends Event {
+  case class LevelComplete(user: User, client: Client, gameId: Int,
+                           levelNumber: Int, time: String, nonce: Int) extends Event {
   }
 
-  case class InGamePurchase(user: User, client: Client, gameId: Long,
-                            gameItem: Int, time: Long, nonce: Long) extends Event
+  case class InGamePurchase(user: User, client: Client, gameId: Int,
+                            gameItem: Int, time: String, nonce: Int) extends Event
 
-  case class GameInstalled(user: User, client: Client, gameId: Long,
-                           time: Long, nonce: Long) extends Event
+  case class GameInstalled(user: User, client: Client, gameId: Int,
+                           time: String, nonce: Int) extends Event
 }
