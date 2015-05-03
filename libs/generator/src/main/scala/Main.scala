@@ -1,15 +1,23 @@
 import scala.pickling.Defaults._
 import scala.pickling.json._
-import Events._
-import java.util.Calendar
+import scalaj.http._
 
 object Main extends App {
-  val u = User(123132L, 1, 23)
-  val c = Client("255.255.255.255", "US", "Ubuntu")
+  while (true) {
+    val event1 = Generator.getGameInstalled.sample.get
+    val event2 = Generator.getLevelCompleteGen.sample.get
+    val event3 = Generator.getInGamePurchase.sample.get
 
-  val event1 = Generator.getGameInstalled.sample
-  println(event1.get.pickle.value)
+    Http("http://localhost:8080/orders").
+      postData(event1.pickle.value).header("Content-Type", "application/json").
+      charset("UTF-8").asString
+    Http("http://localhost:8080/orders").
+      postData(event2.pickle.value).header("Content-Type", "application/json").
+      charset("UTF-8").asString
+    Http("http://localhost:8080/orders").
+      postData(event3.pickle.value).header("Content-Type", "application/json").
+      charset("UTF-8").asString
 
-  val event2 = Generator.getLevelCompleteGen.sample
-  println(event2.get.pickle.value)
+    Thread.sleep(10000)
+  }
 }

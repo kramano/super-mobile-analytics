@@ -37,8 +37,7 @@ object Generator {
 
   private def getTimeAndNonce: (String, Int) = {
     val time = Calendar.getInstance().getTime.toString
-    val nonce = time.hashCode()
-    (time, nonce)
+    (time, math.abs(time.hashCode))
   }
 
   def getLevelCompleteGen: Gen[LevelComplete] = {
@@ -70,5 +69,4 @@ object Generator {
       gameId <- getGameIdGen
     } yield GameInstalled(user, client, gameId, time, nonce)
   }
-
 }

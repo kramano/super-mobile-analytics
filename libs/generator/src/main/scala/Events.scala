@@ -9,8 +9,7 @@ object Events {
   }
 
   case class LevelComplete(user: User, client: Client, gameId: Int,
-                           levelNumber: Int, time: String, nonce: Int) extends Event {
-  }
+                           levelNumber: Int, time: String, nonce: Int) extends Event
 
   case class InGamePurchase(user: User, client: Client, gameId: Int,
                             gameItem: Int, time: String, nonce: Int) extends Event
